@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import MovieList from './/components/MovieList.js';
 import './App.css';
@@ -35,6 +35,15 @@ const App = () => {
     },
   ]);
 
+  const getMovieRequest = async() => {
+   const url = "https://www.omdbapi.com/?s=star wars&apikey=9d31e322"
+    const response = await fetch (url);
+    const responseJson = await response.json();
+    console.log(responseJson);
+  };
+  useEffect(()=>{
+    getMovieRequest();
+  },[]);
   return (
     <div className= 'container-fluid movie-app'>
       <div className='row'>
